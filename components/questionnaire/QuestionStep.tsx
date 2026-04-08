@@ -80,7 +80,6 @@ export function QuestionStep({ question }: QuestionStepProps) {
                       ? 'border-emerald-500 bg-emerald-950/30'
                       : 'border-zinc-700 hover:border-zinc-500'
                   }`}
-                  onClick={() => field.onChange(opt.value)}
                 >
                   <RadioGroupItem
                     value={opt.value}
@@ -129,7 +128,6 @@ export function QuestionStep({ question }: QuestionStepProps) {
                         ? 'border-emerald-500 bg-emerald-950/30'
                         : 'border-zinc-700 hover:border-zinc-500'
                     }`}
-                    onClick={() => toggle(opt.value)}
                   >
                     <Checkbox
                       id={`${question.id}-${opt.value}`}
