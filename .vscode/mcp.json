@@ -1,0 +1,9 @@
+{
+	"servers": {
+		"my-mcp-server-c528cf6e": {
+			"url": "https://my.liivo.ai/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}

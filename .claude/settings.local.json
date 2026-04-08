@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "mcp__claude_ai_Liivo__list-available-services",
+      "mcp__claude_ai_Liivo__list-my-apps",
+      "Bash(npx create-next-app:*)",
+      "Bash(npm install:*)"
+    ]
+  }
+}
