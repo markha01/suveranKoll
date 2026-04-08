@@ -1,115 +1,127 @@
-import Image from "next/image";
-import localFont from "next/font/local";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import Head from 'next/head';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Head>
+        <title>SuveranKoll – Hur exponerad är din organisation?</title>
+      </Head>
+      <div className="min-h-screen bg-zinc-950 text-white">
+        {/* Nav */}
+        <nav className="border-b border-zinc-900 px-6 py-4 flex items-center justify-between max-w-5xl mx-auto">
+          <div className="flex items-center gap-2">
+            <span className="text-emerald-500 font-bold text-lg">SuveranKoll</span>
+            <span className="text-zinc-600 text-sm">av IT-Bladet</span>
+          </div>
+          <Link href="/assessment">
+            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-500 text-white">
+              Starta analys
+            </Button>
+          </Link>
+        </nav>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <main className="max-w-3xl mx-auto px-6 pt-20 pb-32">
+          {/* Byline */}
+          <p className="text-xs font-semibold tracking-widest text-emerald-500 uppercase mb-6">
+            Annika Dahl · IT-Bladet · Undersökande IT-journalistik
+          </p>
+
+          {/* Headline */}
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white mb-6">
+            De flesta CIO:er vet inte hur
+            <br />
+            exponerade de är.
+            <br />
+            <span className="text-emerald-400">Det är dags att ta reda på det.</span>
+          </h1>
+
+          {/* Lead */}
+          <p className="text-lg text-zinc-400 leading-relaxed mb-8 max-w-2xl">
+            Efter Schrems II, Cloud Act och det senaste årets geopolitiska turbulens befinner sig
+            svenska organisationer i ett rättsligt vakuum. Många CIO:er tror att de är
+            skyddade – men har aldrig faktiskt granskat exponeringen.
+          </p>
+          <p className="text-zinc-500 leading-relaxed mb-10">
+            SuveranKoll är ett verktyg jag byggt för att ge er en ärlig bild på 10 minuter.
+            13 frågor. En konkret poäng. En rapport ni kan ta med till styrelsen – utan att
+            dölja obehagliga sanningar med konsultjargong.
+          </p>
+
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="/assessment">
+              <Button
+                size="lg"
+                className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 text-base font-semibold"
+              >
+                Starta självskattningen →
+              </Button>
+            </Link>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-zinc-800 mt-16 pt-12">
+            <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-widest mb-6">
+              Vad mäter vi?
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                {
+                  label: 'Molninfrastruktur',
+                  desc: 'Vilka leverantörer kör era kritiska system – och i vilket land?',
+                  points: '30 poäng',
+                },
+                {
+                  label: 'GDPR & dataresidency',
+                  desc: 'Har ni faktiska avtalsenliga garantier om var er data lagras?',
+                  points: '25 poäng',
+                },
+                {
+                  label: 'Cloud Act / juridisk exponering',
+                  desc: 'Har era jurister verkligen granskat FISA 702 och Cloud Act-exponeringen?',
+                  points: '25 poäng',
+                },
+                {
+                  label: 'AI & Skugg-IT',
+                  desc: 'Vet ni vilka AI-verktyg era medarbetare faktiskt använder?',
+                  points: '20 poäng',
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="p-4 rounded-lg border border-zinc-800 bg-zinc-900"
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <p className="text-sm font-semibold text-white">{item.label}</p>
+                    <span className="text-xs text-emerald-500 font-mono shrink-0 ml-2">
+                      {item.points}
+                    </span>
+                  </div>
+                  <p className="text-xs text-zinc-500 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="mt-12 p-4 border border-zinc-800 rounded-lg bg-zinc-900/50">
+            <p className="text-xs text-zinc-500 leading-relaxed">
+              <strong className="text-zinc-400">Notera:</strong> SuveranKoll är ett
+              självskattningsverktyg – inte en juridisk revision. Resultaten baseras på era svar
+              och bör betraktas som en startpunkt för djupare analys, inte som ett juridiskt
+              utlåtande. Rapporten genereras av AI och granskas inte av en människa.
+            </p>
+          </div>
+        </main>
+
+        <footer className="border-t border-zinc-900 py-6 px-6 text-center">
+          <p className="text-xs text-zinc-600">
+            SuveranKoll · IT-Bladet · Ett verktyg för undersökande IT-journalistik
+          </p>
+        </footer>
+      </div>
+    </>
   );
 }
