@@ -7,9 +7,11 @@ let migrated = false;
 
 function getPool(): Pool {
   if (!pool) {
+    const url = process.env.DATABASE_URL ?? '';
+    const useSsl = process.env.DATABASE_SSL === 'true' || url.includes('sslmode=require');
     pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
-      ssl: process.env.DATABASE_URL?.includes('localhost') ? false : { rejectUnauthorized: false },
+      connectionString: url,
+      ssl: useSsl ? { rejectUnauthorized: false } : false,
     });
   }
   return pool;
