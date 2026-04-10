@@ -15,7 +15,8 @@
       "mcp__claude_ai_Liivo__get-my-app-logs",
       "mcp__claude_ai_Liivo__list-parameters",
       "Bash(node -e:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "mcp__claude_ai_Liivo__diagnose-my-app"
     ]
   }
 }

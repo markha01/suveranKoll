@@ -79,11 +79,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) 
     return {
       props: {
         report,
-        assessment: {
-          ...assessment,
-          created_at: assessment.created_at instanceof Date ? assessment.created_at.toISOString() : assessment.created_at,
-          updated_at: assessment.updated_at instanceof Date ? assessment.updated_at.toISOString() : assessment.updated_at,
-        },
+        assessment,
         assessmentId: id,
       },
     };
