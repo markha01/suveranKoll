@@ -12,7 +12,7 @@ export function ProgressBar({ currentStep }: ProgressBarProps) {
     <div className="mb-8">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-medium text-zinc-400">
-          Steg {currentStep} av {TOTAL_STEPS}
+          Step {currentStep} of {TOTAL_STEPS}
         </span>
         <span className="text-sm text-zinc-500">{STEP_TITLES[currentStep]}</span>
       </div>

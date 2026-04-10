@@ -19,9 +19,9 @@ const RISK_COLORS: Record<string, string> = {
 };
 
 const RISK_LABELS: Record<string, string> = {
-  high: 'Hög risk',
-  moderate: 'Måttlig risk',
-  low: 'Låg risk',
+  high: 'High Risk',
+  moderate: 'Moderate Risk',
+  low: 'Low Risk',
 };
 
 const PRIORITY_COLORS: Record<string, string> = {
@@ -128,13 +128,13 @@ const s = StyleSheet.create({
 export function PDFDocument({ report, assessment }: PDFDocumentProps) {
   const riskColor = RISK_COLORS[report.riskLevel] ?? '#eab308';
   const riskLabel = RISK_LABELS[report.riskLevel] ?? report.riskLevel;
-  const date = new Date(report.reportGeneratedAt).toLocaleDateString('sv-SE');
+  const date = new Date(report.reportGeneratedAt).toLocaleDateString('en-GB');
 
   const BREAKDOWN_CATS = [
-    { key: 'gdpr' as const, label: 'GDPR & Dataresidency', max: 25 },
-    { key: 'cloudAct' as const, label: 'Cloud Act / Juridisk exponering', max: 25 },
-    { key: 'dataResidency' as const, label: 'Molninfrastruktur', max: 30 },
-    { key: 'shadowAI' as const, label: 'AI & Skugg-IT', max: 20 },
+    { key: 'gdpr' as const, label: 'GDPR & Data Residency', max: 25 },
+    { key: 'cloudAct' as const, label: 'Cloud Act / Legal Exposure', max: 25 },
+    { key: 'dataResidency' as const, label: 'Cloud Infrastructure', max: 30 },
+    { key: 'shadowAI' as const, label: 'AI & Shadow IT', max: 20 },
   ];
 
   return (
@@ -142,21 +142,21 @@ export function PDFDocument({ report, assessment }: PDFDocumentProps) {
       {/* Page 1: Cover + Executive Summary + Score */}
       <Page size="A4" style={s.page}>
         <Text style={s.coverTitle}>SuveranKoll</Text>
-        <Text style={s.coverSubtitle}>Digital suveränitetsanalys | IT-Bladet</Text>
-        <Text style={s.coverOrg}>{assessment.org_name ?? 'Organisation'}</Text>
+        <Text style={s.coverSubtitle}>Digital Sovereignty Analysis | IT-Bladet</Text>
+        <Text style={s.coverOrg}>{assessment.org_name ?? 'Organization'}</Text>
         <Text style={s.coverMeta}>
-          {assessment.sector ?? ''} · {assessment.org_size ?? ''} anställda · {date}
+          {assessment.sector ?? ''} · {assessment.org_size ?? ''} employees · {date}
         </Text>
 
         {/* Executive Summary */}
         <View style={s.section}>
-          <Text style={s.sectionTitle}>Sammanfattning</Text>
+          <Text style={s.sectionTitle}>Executive Summary</Text>
           <Text style={s.body}>{report.executiveSummary}</Text>
         </View>
 
         {/* Score */}
         <View style={s.section}>
-          <Text style={s.sectionTitle}>Suveränitetspoäng</Text>
+          <Text style={s.sectionTitle}>Sovereignty Score</Text>
           <View style={s.scoreBlock}>
             <Text style={s.scoreBig}>{report.sovereigntyScore}</Text>
             <Text style={s.scoreOf}>/100</Text>
@@ -175,7 +175,7 @@ export function PDFDocument({ report, assessment }: PDFDocumentProps) {
 
         {/* Key Risks */}
         <View style={s.section}>
-          <Text style={s.sectionTitle}>Identifierade risker</Text>
+          <Text style={s.sectionTitle}>Key Risks Identified</Text>
           {report.keyRisks.map((risk, i) => (
             <View key={i} style={s.bullet}>
               <Text style={s.bulletDot}>›</Text>
@@ -193,7 +193,7 @@ export function PDFDocument({ report, assessment }: PDFDocumentProps) {
       {/* Page 2: Breakdown + Recommendations */}
       <Page size="A4" style={s.page}>
         <View style={s.section}>
-          <Text style={s.sectionTitle}>Riskanalys per kategori</Text>
+          <Text style={s.sectionTitle}>Risk Analysis by Category</Text>
           {BREAKDOWN_CATS.map(({ key, label, max }) => {
             const cat = report.breakdown[key];
             return (
@@ -216,7 +216,7 @@ export function PDFDocument({ report, assessment }: PDFDocumentProps) {
 
         {/* Recommendations */}
         <View style={s.section}>
-          <Text style={s.sectionTitle}>Rekommendationer</Text>
+          <Text style={s.sectionTitle}>Recommendations</Text>
           {report.recommendations.map((rec, i) => (
             <View key={i} style={s.recRow}>
               <View style={s.recHeader}>
@@ -240,7 +240,7 @@ export function PDFDocument({ report, assessment }: PDFDocumentProps) {
         <View style={s.footer}>
           <Text style={s.footerText}>SuveranKoll | IT-Bladet investigative tool</Text>
           <Text style={s.footerText}>
-            Rapport genererad {date} · ID: {report.reportGeneratedAt.slice(0, 10)}
+            Report generated {date} · ID: {report.reportGeneratedAt.slice(0, 10)}
           </Text>
         </View>
       </Page>

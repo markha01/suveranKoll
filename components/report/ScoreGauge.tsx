@@ -8,19 +8,19 @@ interface ScoreGaugeProps {
 
 const RISK_CONFIG: Record<RiskLevel, { label: string; color: string; bg: string; arc: string }> = {
   high: {
-    label: 'Hög risk',
+    label: 'High Risk',
     color: 'text-red-400',
     bg: 'bg-red-950/30 border-red-800',
     arc: '#ef4444',
   },
   moderate: {
-    label: 'Måttlig risk',
+    label: 'Moderate Risk',
     color: 'text-yellow-400',
     bg: 'bg-yellow-950/30 border-yellow-800',
     arc: '#eab308',
   },
   low: {
-    label: 'Låg risk',
+    label: 'Low Risk',
     color: 'text-emerald-400',
     bg: 'bg-emerald-950/30 border-emerald-800',
     arc: '#10b981',
@@ -98,7 +98,7 @@ export function ScoreGauge({ score, riskLevel }: ScoreGaugeProps) {
       </Badge>
       {riskLevel === 'low' && (
         <p className="mt-3 text-xs text-zinc-400 italic">
-          Låg risk innebär inte noll risk. Se rekommendationerna nedan.
+          Low risk does not mean zero risk. See the recommendations below.
         </p>
       )}
     </div>

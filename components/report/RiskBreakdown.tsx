@@ -12,10 +12,10 @@ interface RiskBreakdownProps {
 }
 
 const CATEGORIES = [
-  { key: 'gdpr' as const, label: 'GDPR & dataresidency', maxScore: 25, color: 'bg-blue-500' },
-  { key: 'cloudAct' as const, label: 'Cloud Act / Juridisk exponering', maxScore: 25, color: 'bg-purple-500' },
-  { key: 'dataResidency' as const, label: 'Molninfrastruktur', maxScore: 30, color: 'bg-orange-500' },
-  { key: 'shadowAI' as const, label: 'AI & Skugg-IT', maxScore: 20, color: 'bg-pink-500' },
+  { key: 'gdpr' as const, label: 'GDPR & Data Residency', maxScore: 25, color: 'bg-blue-500' },
+  { key: 'cloudAct' as const, label: 'Cloud Act / Legal Exposure', maxScore: 25, color: 'bg-purple-500' },
+  { key: 'dataResidency' as const, label: 'Cloud Infrastructure', maxScore: 30, color: 'bg-orange-500' },
+  { key: 'shadowAI' as const, label: 'AI & Shadow IT', maxScore: 20, color: 'bg-pink-500' },
 ];
 
 export function RiskBreakdown({ breakdown }: RiskBreakdownProps) {

@@ -29,9 +29,9 @@ export function QuestionStep({ question }: QuestionStepProps) {
 
       {question.type === 'text' && (
         <Input
-          {...register(question.id, { required: question.required ? 'Obligatoriskt fält' : false })}
+          {...register(question.id, { required: question.required ? 'Required field' : false })}
           className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-emerald-500"
-          placeholder="Ange svar..."
+          placeholder="Enter answer..."
         />
       )}
 
@@ -39,11 +39,11 @@ export function QuestionStep({ question }: QuestionStepProps) {
         <Controller
           name={question.id}
           control={control}
-          rules={{ required: question.required ? 'Obligatoriskt fält' : false }}
+          rules={{ required: question.required ? 'Required field' : false }}
           render={({ field }) => (
             <Select onValueChange={field.onChange} value={field.value as string}>
               <SelectTrigger className="bg-zinc-800 border-zinc-700 text-white focus:border-emerald-500">
-                <SelectValue placeholder="Välj ett alternativ..." />
+                <SelectValue placeholder="Select an option..." />
               </SelectTrigger>
               <SelectContent className="bg-zinc-800 border-zinc-700">
                 {question.options?.map((opt) => (
@@ -65,7 +65,7 @@ export function QuestionStep({ question }: QuestionStepProps) {
         <Controller
           name={question.id}
           control={control}
-          rules={{ required: question.required ? 'Obligatoriskt fält' : false }}
+          rules={{ required: question.required ? 'Required field' : false }}
           render={({ field }) => (
             <RadioGroup
               onValueChange={field.onChange}
@@ -108,7 +108,7 @@ export function QuestionStep({ question }: QuestionStepProps) {
             validate: (val) =>
               !question.required ||
               (Array.isArray(val) && val.length > 0) ||
-              'Välj minst ett alternativ',
+              'Select at least one option',
           }}
           render={({ field }) => {
             const selected: string[] = Array.isArray(field.value) ? (field.value as string[]) : [];

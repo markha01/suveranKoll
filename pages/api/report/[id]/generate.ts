@@ -76,6 +76,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(200).json(report);
   } catch (err) {
     console.error('generate report error:', err);
-    res.status(500).json({ error: 'Rapportgenerering misslyckades' });
+    res.status(500).json({ error: 'Report generation failed' });
   }
 }

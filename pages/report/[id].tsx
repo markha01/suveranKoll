@@ -17,7 +17,7 @@ export default function ReportPage({ report, assessment, assessmentId }: Props) 
     <>
       <Head>
         <title>
-          Suveränitetsrapport – {assessment.org_name ?? 'Din organisation'} | SuveranKoll
+          Sovereignty Report – {assessment.org_name ?? 'Your organization'} | SuveranKoll
         </title>
       </Head>
       <div className="min-h-screen bg-zinc-950 text-white">
@@ -30,7 +30,7 @@ export default function ReportPage({ report, assessment, assessmentId }: Props) 
           </Link>
           <Link href="/assessment">
             <span className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer">
-              Ny analys
+              New assessment
             </span>
           </Link>
         </nav>
@@ -75,10 +75,15 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) 
       return { notFound: true };
     }
 
+    const assessment = assessmentResult.rows[0];
     return {
       props: {
         report,
-        assessment: assessmentResult.rows[0],
+        assessment: {
+          ...assessment,
+          created_at: assessment.created_at instanceof Date ? assessment.created_at.toISOString() : assessment.created_at,
+          updated_at: assessment.updated_at instanceof Date ? assessment.updated_at.toISOString() : assessment.updated_at,
+        },
         assessmentId: id,
       },
     };

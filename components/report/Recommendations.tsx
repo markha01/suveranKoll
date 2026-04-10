@@ -7,8 +7,8 @@ interface RecommendationsProps {
 }
 
 const PRIORITY_CONFIG: Record<Priority, { label: string; className: string }> = {
-  critical: { label: 'Kritisk', className: 'bg-red-900 text-red-200 border-red-700' },
-  high: { label: 'Hög', className: 'bg-orange-900 text-orange-200 border-orange-700' },
+  critical: { label: 'Critical', className: 'bg-red-900 text-red-200 border-red-700' },
+  high: { label: 'High', className: 'bg-orange-900 text-orange-200 border-orange-700' },
   medium: { label: 'Medium', className: 'bg-yellow-900 text-yellow-200 border-yellow-700' },
 };
 

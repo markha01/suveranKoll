@@ -30,7 +30,7 @@ export function AssessmentForm() {
         sector: data['sector'] || null,
       }),
     });
-    if (!res.ok) throw new Error('Kunde inte skapa bedömning');
+    if (!res.ok) throw new Error('Could not create assessment');
     const { id } = await res.json();
     setAssessmentId(id);
     return id;
@@ -56,7 +56,7 @@ export function AssessmentForm() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ answers }),
     });
-    if (!res.ok) throw new Error('Kunde inte spara svar');
+    if (!res.ok) throw new Error('Could not save answers');
   }
 
   async function onNext(data: AssessmentFormData) {
@@ -77,7 +77,7 @@ export function AssessmentForm() {
         router.push(`/report/${id}`);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Något gick fel');
+      setError(err instanceof Error ? err.message : 'Something went wrong');
     } finally {
       setSubmitting(false);
     }
@@ -112,7 +112,7 @@ export function AssessmentForm() {
                   disabled={step === 1 || submitting}
                   className="border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white"
                 >
-                  Tillbaka
+                  Back
                 </Button>
                 <Button
                   type="submit"
@@ -121,11 +121,11 @@ export function AssessmentForm() {
                 >
                   {submitting
                     ? step === TOTAL_STEPS
-                      ? 'Genererar rapport…'
-                      : 'Sparar…'
+                      ? 'Generating report…'
+                      : 'Saving…'
                     : step === TOTAL_STEPS
-                    ? 'Generera rapport'
-                    : 'Nästa steg'}
+                    ? 'Generate report'
+                    : 'Next step'}
                 </Button>
               </div>
             </form>
