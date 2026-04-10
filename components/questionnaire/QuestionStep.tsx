@@ -73,9 +73,8 @@ export function QuestionStep({ question }: QuestionStepProps) {
               className="space-y-2"
             >
               {question.options?.map((opt) => (
-                <div
+                <label
                   key={opt.value}
-                  onClick={() => field.onChange(opt.value)}
                   className={`flex items-center space-x-3 p-3 rounded-lg border cursor-pointer transition-colors ${
                     field.value === opt.value
                       ? 'border-emerald-500 bg-emerald-950/30'
@@ -84,18 +83,12 @@ export function QuestionStep({ question }: QuestionStepProps) {
                 >
                   <RadioGroupItem
                     value={opt.value}
-                    id={`${question.id}-${opt.value}`}
-                    className="border-zinc-500 text-emerald-500"
-                    onClick={(e) => e.stopPropagation()}
+                    className="border-zinc-500 text-emerald-500 shrink-0"
                   />
-                  <Label
-                    htmlFor={`${question.id}-${opt.value}`}
-                    className="text-zinc-200 cursor-pointer text-sm leading-relaxed"
-                    onClick={(e) => e.stopPropagation()}
-                  >
+                  <span className="text-zinc-200 text-sm leading-relaxed flex-1">
                     {opt.label}
-                  </Label>
-                </div>
+                  </span>
+                </label>
               ))}
             </RadioGroup>
           )}
